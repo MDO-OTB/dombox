@@ -1,0 +1,67 @@
+<!--Copyright Apiternel 2016-->
+<!DOCTYPE html>
+<html ng-app="mainApplication">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/styles.css">
+<!-- <link rel="stylesheet" href="scripts/angular-chart/angular-chart.css"> -->
+<script src="scripts/angular.min.js"></script>
+<script src="scripts/angular-route.min.js"></script>
+<script src="scripts/angular-messages.min.js"></script> 
+<script src="scripts/angular-chart/Chart.min.js"></script>
+<script src="scripts/angular-chart/angular-chart.js"></script>
+<script src="app/mainApplication.js" type="text/javascript" language="javascript"></script>
+<script src="app/controllers/mainController.js" type="text/javascript" language="javascript"></script>
+<script src="app/controllers/topController.js" type="text/javascript" language="javascript"></script>
+<script src="app/controllers/logController.js" type="text/javascript" language="javascript"></script>
+<script src="app/controllers/dataController.js" type="text/javascript" language="javascript"></script>
+<script src="app/controllers/shutterController.js" type="text/javascript" language="javascript"></script>
+<script src="app/controllers/airingController.js" type="text/javascript" language="javascript"></script>
+<script src="app/controllers/configurationController.js" type="text/javascript" language="javascript"></script> 
+<script src="app/services/serverMonitoring.js" type="text/javascript" language="javascript"></script> 
+<script src="app/services/dombox.js" type="text/javascript" language="javascript"></script> 
+</head>
+<body ng-controller="mainController">
+	<div ng-controller="topController" >
+		<div >
+			<strong>Dombox</em>
+		</div>
+		<div>
+			<ul>
+				<li><strong>Hostname: </strong> <span ng-bind="host_name" /></li>
+				<li><strong>IP Address: </strong> <span ng-bind="host_ip"/></li>
+				<li><strong>Uptime: </strong> <span ng-bind="host_uptime"/></li>
+				<li><strong>Backend Version: </strong> <span ng-bind="back_version" /></li>
+				<li><strong>Frontend Version: </strong> <span ng-bind="front_version" /></li>
+			</ul>
+		</div>
+	</div>
+	
+	<nav>
+		<div >
+			<ul> 
+				<li> <a href="" ng-click="selectWelcome()">Accueil</a> </li>
+				<li> <a href=""  ng-click="selectLog()">Journal</a> </li>
+				<li> <a href=""  ng-click="selectData()">Relevées des mesures</a> </li>
+				<li> <a href=""  ng-click="selectShuttle()">Contrôle des volets</a> </li>
+				<li> <a href=""  ng-click="selectAiring()">Contrôle de la ventilation</a> </li>
+				<li> <a href=""  ng-click="selectConfiguration()">Configuration</a> </li>
+            </ul>
+		</div>
+	</nav>
+	
+	<div class="waitingServer" ng-show="waitingServer">
+                <img src="css/time.png" />
+                <p>Waiting Server</p>
+	</div>
+	<hr>
+	<div ng-view></div>
+	<div class="errorServer" ng-show="errorServer">
+		<legend>Error</legend>
+		<img src="css/alert.png" /><br>Communication lost
+	</div>
+	
+	<footer>
+	</footer>
+</body>
+</html>

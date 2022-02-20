@@ -1,0 +1,49 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides: dombox_agent
+# Required-Start:    $local_fs $syslog
+# Required-Stop:     $local_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: House data collector and action sequencer
+### END INIT INFO
+
+NAME=dombox_agent
+case "$1" in
+  start)
+    echo "Starting ${NAME}"
+    touch /tmp/recurrent_samples
+    touch /tmp/daily_samples
+    touch /tmp/log_roof
+    
+    chown www-data:www-data /tmp/recurrent_samples
+    chown www-data:www-data /tmp/daily_samples
+    chown www-data:www-data /tmp/log_roof
+    touch /tmp/shutter_pwm_lock
+    touch /tmp/rflink_lock
+    touch /tmp/shutter1
+    touch /tmp/shutter2
+    touch /tmp/shutterFFFFA0
+    touch /tmp/shutterFFFFB0
+    touch /tmp/shutterFFFFC0
+    touch /tmp/shutterFFFFD0
+    touch /tmp/shutterFFFFE0
+    touch /tmp/shutterFFFFF0
+    chown www-data:www-data /tmp/rflink_lock
+    chown www-data:www-data /tmp/shutter*
+    /usr/bin/python3 /usr/bin/${NAME}.py & 
+    ;;
+  stop)
+    echo "Stopping ${NAME}"
+    pkill -f ${NAME}.py
+    ;;
+  restart|force-reload)
+    $0 stop
+    $0 start	
+    ;;
+  *)
+    exit 1
+    ;;
+esac
+
+exit 0

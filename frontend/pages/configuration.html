@@ -1,0 +1,445 @@
+<div>
+    <form name="configurationForm" >
+        <div ng-form="shutterForm">
+            <table class="confTable">
+                <tr>
+                    <th colspan="3">Contrôle des volets</th>
+                </tr>
+                <tr> 
+                    <td><label for="ITempControlShutter" >  En fonction de la Température : </label> </td>
+                    <td colspan="2"> <input class="confInput" id="ITempControlShutter" type="checkbox" ng-model="conf.tempControlShutter"> </input></td>
+                </tr>
+                <tr ng-if="conf.tempControlShutter">
+                    <td ><label for="tempMaxThresholdOpen">Temperature haute déclenchant l'ouverture : </label></td>
+                    <td colspan="2"><input class="confInput" id="tempMaxThresholdOpen"  name="tempMaxThresholdOpen" ng-model="conf.tempMaxThresholdOpen" type="number" min="-20" step="0.1" max="50" required="required"></input>°C</td>
+                </tr>
+                <tr ng-if="conf.tempControlShutter">
+                    <td><label for="tempMinThresholdOpen">Temperature basse déclenchant l'ouverture : </label></td>
+                    <td colspan="2"><input class="confInput" id="tempMinThresholdOpen"  name="tempMinThresholdOpen" ng-model="conf.tempMinThresholdOpen" type="number" min="-20" step="0.1" max="50" required="required"></input>°C</td>
+                </tr>
+                <tr ng-if="conf.tempControlShutter">
+                    <td><label for="tempMaxThresholdClose">Temperature haute déclenchant la  fermeture : </label></td>
+                    <td colspan="2"><input class="confInput" id="tempMaxThresholdClose"  name="tempMaxThresholdClose" ng-model="conf.tempMaxThresholdClose" type="number" min="-20" step="0.1" max="50" required="required"></input>°C</td>
+                </tr>
+                <tr ng-if="conf.tempControlShutter">
+                    <td><label for="tempMinThresholdClose">Temperature basse déclenchant la fermeture : </label></td>
+                    <td colspan="2"><input class="confInput" id="tempMainThresholdClose"  name="tempMinThresholdClose" ng-model="conf.tempMinThresholdClose" type="number" min="-20" step="0.1" max="50" required="required"></input>°C</td>
+                </tr>
+                <tr> 
+                    <td><label for="ITimeControlShutter" > En fonction de l'heure  : </label> </td>
+                    <td colspan="2"> <input class="confInput" id="ITimeControlShutter" type="checkbox" ng-model="conf.timeControlShutter"> </input>  </td>
+                </tr>
+                <tr ng-if="conf.timeControlShutter">
+                    <td><label for="roofOpenHour">Ouverture automatique du toît à : </label></td>
+                    <td><input class="confInput" id="roofOpenHour" name="roofOpenHour" ng-model="conf.roofOpenHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="roofOpenMinute" name="roofOpenMinute" ng-model="conf.roofOpenMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.timeControlShutter">
+                    <td><label for="roofCloseHour">Fermeture automatique toît à : </label></td>
+                    <td><input class="confInput" id="roofCloseHour"  name="roofCloseHour" ng-model="conf.roofCloseHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="roofCloseMinute"  name="roofCloseMinute" ng-model="conf.roofCloseMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.timeControlShutter">
+                    <td><label for="kitchenOpenHour">Ouverture automatique de la cuisine à : </label></td>
+                    <td><input class="confInput" id="kitchenOpenHour"  name="kitchenOpenHour" ng-model="conf.kitchenOpenHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="kitchenOpenMinute"  name="kitchenOpenMinute" ng-model="conf.kitchenOpenMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.timeControlShutter">
+                    <td><label for="kitchenCloseHour">Fermeture automatique de la cuisine à : </label></td>
+                    <td><input class="confInput" id="kitchenCloseHour"  name="kitchenCloseHour" ng-model="conf.kitchenCloseHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="kitchenCloseMinute"  name="kitchenCloseMinute" ng-model="conf.kitchenCloseMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.timeControlShutter">
+                    <td><label for="bathroomOpenHour">Ouverture automatique de la salle de bain à : </label></td>
+                    <td><input class="confInput" id="bathroomOpenHour"  name="bathroomOpenHour" ng-model="conf.bathroomOpenHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="bathroomOpenMinute"  name="bathroomOpenMinute" ng-model="conf.bathroomOpenMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.timeControlShutter">
+                    <td><label for="bathroomCloseHour">Fermeture automatique de la salle de bain à : </label></td>
+                    <td><input class="confInput" id="bathroomCloseHour"  name="bathroomCloseHour" ng-model="conf.bathroomCloseHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="bathroomCloseMinute"  name="bathroomCloseMinute" ng-model="conf.bathroomCloseMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.timeControlShutter">
+                    <td><label for="bedroomOpenHour">Ouverture automatique de la chambre à : </label></td>
+                    <td><input class="confInput" id="bedroomOpenHour"  name="bedroomOpenHour" ng-model="conf.bedroomOpenHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="bedroomOpenMinute"  name="bedroomOpenMinute" ng-model="conf.bedroomOpenMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.timeControlShutter">
+                    <td><label for="bedroomCloseHour">Fermeture automatique de la chambre à : </label></td>
+                    <td><input class="confInput" id="bedroomCloseHour"  name="bedroomCloseHour" ng-model="conf.bedroomCloseHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="bedroomCloseMinute"  name="bedroomCloseMinute" ng-model="conf.bedroomCloseMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.timeControlShutter">
+                    <td><label for="livingRoomEastOpenHour">Ouverture automatique du salon Est à : </label></td>
+                    <td><input class="confInput" id="livingRoomEastOpenHour"  name="livingRoomEastOpenHour" ng-model="conf.livingRoomEastOpenHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="livingRoomEastOpenMinute"  name="livingRoomEastOpenMinute" ng-model="conf.livingRoomEastOpenMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.timeControlShutter">
+                    <td><label for="livingRoomEastCloseHour">Fermeture automatique du salon Est à : </label></td>
+                    <td><input class="confInput" id="livingRoomEastCloseHour"  name="livingRoomEastCloseHour" ng-model="conf.livingRoomEastCloseHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="livingRoomEastCloseMinute"  name="livingRoomEastCloseMinute" ng-model="conf.livingRoomEastCloseMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.timeControlShutter">
+                    <td><label for="livingRoomWestOpenHour">Ouverture automatique du salon Ouest à : </label></td>
+                    <td><input class="confInput" id="livingRoomWestOpenHour"  name="livingRoomWestOpenHour" ng-model="conf.livingRoomWestOpenHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="livingRoomWestOpenMinute"  name="livingRoomWestOpenMinute" ng-model="conf.livingRoomWestOpenMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.timeControlShutter">
+                    <td><label for="livingRoomWestCloseHour">Fermeture automatique du salon Ouest à : </label></td>
+                    <td><input class="confInput" id="livingRoomWestCloseHour"  name="livingRoomWestCloseHour" ng-model="conf.livingRoomWestCloseHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="livingRoomWestCloseMinute"  name="livingRoomWestCloseMinute" ng-model="conf.livingRoomWestCloseMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>                
+                <tr>
+                    <td colspan="3"><button class="confApply" ng-click="applyConfig()" type="button">Appliquer</button></td>
+                </tr>
+            </table>
+            <fieldset  ng-if="configurationForm.shutterForm.$invalid">
+            <legend> Erreur de saisie </legend>
+            <ul ng-if="configurationForm.shutterForm.tempMaxThresholdOpen.$dirty" ng-messages="configurationForm.shutterForm.tempMaxThresholdOpen.$error">
+                <li ng-message="required"> Merci de saisir toutes les températures de déclenchement</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Témpérature trop basse</li>
+                <li ng-message="max">Témpérature trop haute</li>
+                <li ng-message="step">Témpérature invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.tempMinThresholdOpen.$dirty" ng-messages="configurationForm.shutterForm.tempMinThresholdOpen.$error">
+                <li ng-message="required"> Merci de saisir toutes les températures de déclenchement</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Température trop basse</li>
+                <li ng-message="max">Témpérature trop haute</li>
+                <li ng-message="step">Témpérature invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.tempMaxThresholdClose.$dirty" ng-messages="configurationForm.shutterForm.tempMaxThresholdClose.$error">
+                <li ng-message="required"> Merci de saisir toutes les températures de déclenchement</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Témpérature trop basse</li>
+                <li ng-message="max">Témpérature trop haute</li>
+                <li ng-message="step">Témpérature invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.tempMinThresholdClose.$dirty" ng-messages="configurationForm.shutterForm.tempMinThresholdClose.$error">
+                <li ng-message="required"> Merci de saisir toutes les températures de déclenchement</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Température trop basse</li>
+                <li ng-message="max">Témpérature trop haute</li>
+                <li ng-message="step">Témpérature invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.roofOpenHour.$dirty" ng-messages="configurationForm.shutterForm.roofOpenHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.roofOpenMinute.$dirty" ng-messages="configurationForm.shutterForm.roofOpenMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.roofCloseHour.$dirty" ng-messages="configurationForm.shutterForm.roofCloseHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.roofCloseMinute.$dirty" ng-messages="configurationForm.shutterForm.roofCloseMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.kitchenOpenHour.$dirty" ng-messages="configurationForm.shutterForm.kitchenOpenHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.kitchenOpenMinute.$dirty" ng-messages="configurationForm.shutterForm.kitchenOpenMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.kitchenCloseHour.$dirty" ng-messages="configurationForm.shutterForm.kitchenCloseHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.kitchenCloseMinute.$dirty" ng-messages="configurationForm.shutterForm.kitchenCloseMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.bathroomOpenHour.$dirty" ng-messages="configurationForm.shutterForm.bathroomOpenHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.bathroomOpenMinute.$dirty" ng-messages="configurationForm.shutterForm.bathroomOpenMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.bathroomCloseHour.$dirty" ng-messages="configurationForm.shutterForm.bathroomCloseHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.bathroomCloseMinute.$dirty" ng-messages="configurationForm.shutterForm.bathroomCloseMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>       
+            <ul ng-if="configurationForm.shutterForm.bedroomOpenHour.$dirty" ng-messages="configurationForm.shutterForm.bedroomOpenHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.bedroomOpenMinute.$dirty" ng-messages="configurationForm.shutterForm.bedroomOpenMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.bedroomCloseHour.$dirty" ng-messages="configurationForm.shutterForm.bedroomCloseHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.bedroomCloseMinute.$dirty" ng-messages="configurationForm.shutterForm.bedroomCloseMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.livingRoomEastOpenHour.$dirty" ng-messages="configurationForm.shutterForm.livingRoomEastOpenHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.livingRoomEastOpenMinute.$dirty" ng-messages="configurationForm.shutterForm.livingRoomEastOpenMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.livingRoomEastCloseHour.$dirty" ng-messages="configurationForm.shutterForm.livingRoomEastCloseHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.livingRoomEastCloseMinute.$dirty" ng-messages="configurationForm.shutterForm.livingRoomEastCloseMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.livingRoomWestOpenHour.$dirty" ng-messages="configurationForm.shutterForm.livingRoomWestOpenHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.livingRoomWestOpenMinute.$dirty" ng-messages="configurationForm.shutterForm.livingRoomWestOpenMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.livingRoomWestCloseHour.$dirty" ng-messages="configurationForm.shutterForm.livingRoomWestCloseHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.shutterForm.livingRoomWestCloseMinute.$dirty" ng-messages="configurationForm.shutterForm.livingRoomWestCloseMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+        </fieldset>
+        </div>
+        <br>
+        <div ng-form="airingForm">
+            <table class="confTable" >
+                <tr>
+                    <th colspan="3">Contrôle de l'aération</th>
+                </tr>
+                <tr> 
+                    <td><label for="ITimeControlAiring" > En fonction de l'heure  : </label> </td>
+                    <td colspan="2"> <input class="confInput" id="ITimeControlAiring" type="checkbox" ng-model="conf.timeControlAiring"> </input>  </td>
+                </tr>
+                <tr ng-if="conf.timeControlAiring">
+                    <td><label for="airingRoomStartHour">Démarrage dans les chambres à : </label></td>
+                    <td><input class="confInput" id="airingRoomStartHour" name="airingRoomStartHour" ng-model="conf.airingRoomStartHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="airingRoomStartMinute" name="airingRoomStartMinute" ng-model="conf.airingRoomStartMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.timeControlAiring">
+                    <td><label for="airingRoomStopHour">Arrêt dans les chambres à : </label></td>
+                    <td><input class="confInput" id="airingRoomStopHour"  name="airingRoomStopHour" ng-model="conf.airingRoomStopHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="airingRoomStopMinute"  name="airingRoomStopMinute" ng-model="conf.airingRoomStopMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><button class="confApply" ng-click="applyConfig()" type="button">Appliquer</button></td>
+                </tr>
+            </table>
+            <fieldset  ng-if="configurationForm.airingForm.$invalid">
+            <legend> Erreur de saisie </legend>
+            <ul ng-if="configurationForm.airingForm.airingRoomStartHour.$dirty" ng-messages="configurationForm.airingForm.airingRoomStartHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.airingForm.airingRoomStartMinute.$dirty" ng-messages="configurationForm.airingForm.airingRoomStartMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.airingForm.airingRoomStopHour.$dirty" ng-messages="configurationForm.airingForm.airingRoomStopHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.airingForm.airingRoomStopMinute.$dirty" ng-messages="configurationForm.airingForm.airingRoomStopMinute.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+        </fieldset>
+        </div>
+        <br>
+        <div ng-form="alarmForm">
+            <table class="confTable" >
+                <tr>
+                    <th colspan="3">Alarme</th>
+                </tr>
+                <tr> 
+                    <td><label for="IAlarm" > Activation  : </label> </td>
+                    <td colspan="2"> <input class="confInput" id="IAlarm" type="checkbox" ng-model="conf.alarm"> </input>  </td>
+                </tr>
+                <tr ng-if="conf.alarm">
+                    <td><label for="alarmHour">Alarme planifiée à : </label></td>
+                    <td><input class="confInput" id="alarmHour" name="alarmHour" ng-model="conf.alarmHour" type="number" min="0" step="1" max="23" required="required"></input>:</td>
+                    <td><input class="confInput" id="alarmMinute" name="alarmMinute" ng-model="conf.alarmMinute" type="number" min="0" step="1" max="59" required="required"></input></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><button class="confApply" ng-click="applyConfig()" type="button">Appliquer</button></td>
+                </tr>
+            </table>
+            <fieldset  ng-if="configurationForm.alarmForm.$invalid">
+            <legend> Erreur de saisie </legend>
+            <ul ng-if="configurationForm.alarmForm.alarmHour.$dirty" ng-messages="configurationForm.alarmForm.alarmHour.$error">
+                <li ng-message="required">Nombre absent</li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Heure invalide</li>
+                <li ng-message="max">Heure invalide</li>
+                <li ng-message="step">Heure invalide</li>
+            </ul>
+            <ul ng-if="configurationForm.alarmForm.alarmMinute.$dirty" ng-messages="configurationForm.alarmForm.alarmMinute.$error">
+                <li ng-message="required">Nombre invalide </li>
+                <li ng-message="number">Nombre invalide</li>
+                <li ng-message="min">Minute invalide</li>
+                <li ng-message="max">Minute invalide</li>
+                <li ng-message="step">Minute invalide</li>
+            </ul>
+        </fieldset>
+        </div>
+        <br>
+        <div ng-form="measureForm">
+            <table class="confTable" >
+                <tr>
+                    <th colspan="3">Contrôle des mesures</th>
+                </tr>
+                <tr> 
+                    <td><label for="IMeasureEnabled" >  Activation des mesures : </label> </td>
+                    <td colspan="2"> <input class="confInput" id="IMeasureEnabled" type="checkbox" ng-model="conf.measureEnabled"> </input></td>
+                </tr>
+                <tr ng-if="conf.measureEnabled">
+                    <td ><label for="IDelayMeasure">Delais entre les mesures : </label></td>
+                    <td colspan="2"><input class="confInput" id="IDelayMeasure"  name="IDelayMeasure" ng-model="conf.delayMeasure" type="number" min="5" step="1" max="10000" required="required"></input> s</td>
+                </tr>
+                <tr ng-if="conf.measureEnabled">
+                    <td><label for="IMaxSamples">Maximum d'échantillons réguliers : </label></td>
+                    <td colspan="2"><input class="confInput" id="IMaxSamples"  name="IMaxSamples" ng-model="conf.maxSamples" type="number" min="5" step="1" max="50000" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.measureEnabled">
+                    <td><label for="IMaxDailySamplesADay">Nombre d'échantillons journaliers par jour : </label></td>
+                    <td colspan="2"><input class="confInput" id="IMaxDailySamplesADay"  name="IMaxDailySamplesADay" ng-model="conf.maxDailySamplesADay" type="number" min="1" step="1" max="100" required="required"></input></td>
+                </tr>
+                <tr ng-if="conf.measureEnabled">
+                    <td><label for="IMaxDailySamples">Maximum d'échantillons journaliers : </label></td>
+                    <td colspan="2"><input class="confInput" id="IMaxDailySamples"  name="IMaxDailySamples" ng-model="conf.maxDailySamples" type="number" min="5" step="1" max="5000" required="required"></input></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><button class="confApply" ng-click="applyConfig()" type="button">Appliquer</button></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div ng-form="logForm">
+            <table class="confTable" >
+                <tr>
+                    <th colspan="3">Contrôle du journal</th>
+                </tr>
+                <tr>
+                    <td colspan="3"><button class="confApply" ng-click="clearLog()" type="button">Effacer</button></td>
+                </tr>
+                <tr>
+                    <td ><label for="ILogLevel">Filtre minimum : </label></td>
+                    <td colspan="2"><select class="logLevelList" ng-model="conf.logLevel" name="ILogLevel" id="ILogLevel">
+                        <option value="CRITICAL">CRITICAL</option>
+                        <option value="ERROR">ERROR</option>
+                        <option value="WARNING">WARNING</option>
+                        <option value="INFO">INFO</option>
+                        <option value="DEBUG">DEBUG</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><button class="confApply" ng-click="applyConfig()" type="button">Appliquer</button></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>

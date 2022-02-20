@@ -1,0 +1,62 @@
+<div>
+    <h1> Relevées des mesures </h1>
+    <div ng-if="graphLinePrint">
+        <h3 ng-bind="graphTitle"> </h3>
+        <button  ng-click="downloadData()" type="button">Refresh</button>
+        <canvas  id="dataGraph" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series"></canvas> 
+
+    </div>
+    <div ng-if="graphBarPrint">
+        <h3 ng-bind="graphTitle"> </h3>
+        <button  ng-click="downloadData()" type="button">Refresh</button>
+        <canvas  id="dataGraph" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series"></canvas>
+    </div>
+
+    <div>
+        <label for="IWhat" > Grandeur : </label>
+        <select ng-model="what" ng-change="downloadData()" id="IWhat">
+            <option value="temperature">Température</option>
+            <option value="humidity">Humidité</option>
+            <option value="pressure">Pression atmosphérique</option>
+            <option value="shutter">Volet</option>
+        </select>
+    </div>
+    <div>
+        <label for="IStep" > Précision : </label> 
+        <select ng-model="step" ng-change="downloadData()" id="IStep">
+            <option value="hour">Quart d'heure</option>
+            <option value="day">Demi journée</option>
+        </select>
+    </div>
+    <div ng-show="what==='temperature'" >
+        Capteur de température :
+        <table>
+            <tr> <input id="ITempAM2302_1" type="checkbox" ng-model="printTempAM2302_1" ng-change="updateGraph()"> </input> <label for="ITempAM2302_1" > AM2302_1 </label> </tr>
+            <tr> <input id="ITempAM2302_2" type="checkbox" ng-model="printTempAM2302_2" ng-change="updateGraph()"> </input> <label for="ITempAM2302_2" > AM2302_2 </label> </tr>
+            <tr> <input id="ITempBMP085" type="checkbox" ng-model="printTempBMP085" ng-change="updateGraph()"> </input> <label for="ITempBMP085" > BMP085 </label> </tr>
+
+        </table>
+    </div>
+    <div ng-show="what==='humidity'" >
+        Capteur d'humidité :
+        <table>
+            <tr> <input id="IHumiAM2302_1" type="checkbox" ng-model="printHumiAM2302_1" ng-change="updateGraph()"> </input> <label for="IHumiAM2302_1" > AM2302_1 </label> </tr>
+            <tr> <input id="IHumiAM2302_2" type="checkbox" ng-model="printHumiAM2302_2" ng-change="updateGraph()"> </input> <label for="IHumiAM2302_2" > AM2302_2 </label> </tr>
+        </table>
+    </div>
+    <div ng-show="what==='pressure'" >
+        Capteurs de pression :
+        <table>
+            <tr> <input id="IPresBMP085" type="checkbox" ng-model="printPresBMP085" ng-change="updateGraph()"> </input> <label for="IPresBMP085" > BMP085 </label> </tr>
+        </table>
+    </div>
+    <div ng-show="what==='shutter'" >
+        Volets :
+        <table>
+            <tr> <input id="IShutter1" type="checkbox" ng-model="printShutter1" ng-change="updateGraph()"> </input> <label for="IShutter1" > Camille </label> </tr>
+            <tr> <input id="IShutter2" type="checkbox" ng-model="printShutter2" ng-change="updateGraph()"> </input> <label for="IShutter2" > Rémi </label> </tr>
+
+        </table>
+    </div>
+
+</div>

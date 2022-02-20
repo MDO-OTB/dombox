@@ -1,0 +1,89 @@
+  <div>
+  <h1> Contrôle des volets </h1>
+  
+  <table>
+    <thead>
+        <tr>
+            <th class="shutterText" ><label for="shutterRoof">Toît</label></th>
+            <th class="shutterText" ><label for="shutterStage">Etage</label></th>
+            <th class="shutterText" ><label>Maison</label></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><select class="shutterActionButton" ng-model="shutterRoof" ng-change="refreshShutterRoofStatus()" name="shutterRoof" id="shutterRoof">
+                <option value="bedroom_remi">Chambre Rémi</option>
+                <option value="bedroom_camille">Chambre Camille</option>
+            </select></td>
+            <td><select class="shutterActionButton" ng-model="shutterStage" ng-change="refreshShutterStageStatus()" name="shutterStage" id="shutterStage">
+                <option value="bedroom_parents">Chambre Parents</option>
+                <option value="kitchen">Cuisine</option>
+                <option value="livingRoom_east">Salle à manger - Est</option>
+		<option value="livingRoom_west">Salle à manger - Ouest</option>
+                <option value="bathroom">Salle de bain</option>
+            </select></td>
+            <td></td>
+        </tr>
+    </tbody>
+  </table>
+  <br>
+  <table>
+    <thead>
+        <tr>
+            <th class="shutterText">Action</th>
+            <th class="shutterText">Action</th>
+            <th class="shutterText">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><button class="shutterActionButton" ng-click="shutterRoofOpen()" type="button">Ouverture</button></td>
+            <td><button class="shutterActionButton" ng-click="shutterStageOpen()" type="button">Ouverture</button></td>
+            <td><button class="shutterActionButton" ng-click="shutterHouseOpen()" type="button">Ouverture</button></td>
+        </tr>
+        <tr>
+            <td><button class="shutterActionButton" ng-click="shutterRoofStop()" type="button">Arrêt</button></td>
+            <td><button class="shutterActionButton" ng-click="shutterStageStop()" type="button">Arrêt</button></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><button class="shutterActionButton" ng-click="shutterRoofClose()" type="button">Fermeture</button></td>
+            <td><button class="shutterActionButton" ng-click="shutterStageClose()" type="button">Fermeture</button></td>
+            <td><button class="shutterActionButton" ng-click="shutterHouseClose()" type="button">Fermeture</button></td>
+        </tr>
+        <tr>
+            <td><button class="shutterActionButton" ng-click="shutterRoofForceOpen()" type="button">Ouverture Forcée</button></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><button class="shutterActionButton" ng-click="shutterRoofForceClose()" type="button">Fermeture Forcée</button></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+  </table>
+  <br>
+  <table ng-if="shutterStatusReceived">
+    <thead>
+        <tr>
+            <th class="shutterText" >status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="shutterText"> {{shutterStatus}} </td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td> <button class="shutterRefresh" ng-click="refreshShutterStatus()" type="button">Rafraichir</button> </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+  </table>
+
+  </form>
+  </div>

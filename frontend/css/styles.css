@@ -1,0 +1,68 @@
+#dataGraph {
+    height: 320px;
+    width: 100%;
+}
+
+.sortorder:after {
+    content: '\25b2';
+  }
+.sortorder.reverse:after {
+    content: '\25bc';
+  }
+
+table, td, th {
+    border: 1px solid #E8E8E8;
+}
+
+.confTable {
+    width:600px;
+    text-align: center;
+}
+.confInput {
+    width:50px;
+    text-align: center;
+}
+
+.confApply {
+    width:100%;
+    text-align: center;
+}
+
+.shutterActionButton {
+    height:35px;
+    width:200px;
+    text-align: center;
+}
+
+.airingActionButton {
+    height:35px;
+    width:200px;
+    text-align: center;
+}
+
+.shutterText {
+    height:35px;
+    width:200px;
+    text-align: center;
+}
+
+.airingText {
+    height:35px;
+    width:200px;
+    text-align: center;
+}
+.shutterRefresh {
+    height:35px;
+    width:200px;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.logLevelList {
+    height:35px;
+    width:200px;
+    text-align: center;
+}

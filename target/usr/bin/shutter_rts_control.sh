@@ -1,0 +1,1 @@
+../../../shutter/shutter_rts_control.sh
